@@ -11,7 +11,7 @@ set_up_hyperfoil(){
     echo "Setting Up Hyperfoil"
 
     # Start controller in standalone mode
-    docker run  --name hyperfoil-container --rm -v -u -d --network host quay.io/hyperfoil/hyperfoil standalone
+    docker run  --name hyperfoil-container --rm -d --network host quay.io/hyperfoil/hyperfoil standalone
 
     # Wait for hyperfoil controller app to start up
     echo "-- Waiting for hyperfoil to start"
@@ -85,7 +85,7 @@ CWD=$(pwd)
 RUN_COUNT=${#RUNS[@]}
 
 
-# Disable turbo boost and start testing (need to run  sudo ./test.sh)
+# Disable turbo boost and start testing
 echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
 
 

@@ -5,7 +5,7 @@ COUNT=0
 RUN_COUNT=0
 TEST=("JVM mode" "Native mode")
 # TODO add container memory limits here.
-RUNS=("docker run --name jfr-datasource --rm -v -u -d --network host quay.io/andrewazores/jfr-datasource:latest-jvm" "docker run --name jfr-datasource --rm -v -u -d --network host quay.io/andrewazores/jfr-datasource:latest-native")
+RUNS=("docker run --name jfr-datasource --rm -d --network host quay.io/andrewazores/jfr-datasource:latest-jvm" "docker run --name jfr-datasource --rm -d --network host quay.io/andrewazores/jfr-datasource:latest-native")
 
 set_up_hyperfoil(){
     echo "Setting Up Hyperfoil"

@@ -73,7 +73,7 @@ run_test() {
   ${RUNS[$((COUNT%RUN_COUNT))]}
   wait_for_quarkus
 
-  curl -F "file=@/home/rtoyonag/IdeaProjects/jfr-datasource-performance/dummy_recording.jfr" "localhost:8080/upload"
+  curl -F "file=@$CWD/dummy_recording.jfr" "localhost:8080/upload"
 
   # Run benchmark
   RESULTS[$COUNT]="$(run_hyperfoil_benchmark)"
@@ -81,7 +81,7 @@ run_test() {
 }
 
 echo "Starting Performance Test"
-
+CWD=$(pwd)
 RUN_COUNT=${#RUNS[@]}
 
 
@@ -89,7 +89,7 @@ RUN_COUNT=${#RUNS[@]}
 echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
 
 
-set_up_hyperfoil "/home/rtoyonag/IdeaProjects/jfr-datasource-performance/benchmark.hf.yaml"
+set_up_hyperfoil "$CWD/benchmark.hf.yaml"
 
 # Do test
 for i in "${RUNS[@]}"
